@@ -5,8 +5,9 @@ on:
     branches:
       - master
 jobs:
-  deploy-gh-pages:
+  build:
     runs-on: ubuntu-latest
+    name: Build
     permissions:
       contents: read
       packages: write
@@ -26,15 +27,12 @@ jobs:
     name: Deploy
     needs: build
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
-
     steps:
       - name: Download artifact
         uses: actions/download-artifact@v2
         with:
           name: production-files
           path: ./build
-
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
         with:
