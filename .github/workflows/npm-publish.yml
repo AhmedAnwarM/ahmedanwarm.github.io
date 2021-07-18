@@ -5,7 +5,8 @@ on:
     branches:
       - master
 jobs:
-  deploy-gh-pages:
+  build:
+    name: Build
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -16,6 +17,26 @@ jobs:
         with:
           node-version: 14
       - run: npm ci
-      - run: npm run deploy
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      - run: npm run build
+      with:
+        name: production-files
+        path: ./build
+
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: production-files
+          path: ./build
+
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
