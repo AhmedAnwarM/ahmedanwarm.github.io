@@ -23,7 +23,7 @@ class MainPage extends Component {
         window.removeEventListener('scroll', this.handleScroll);
     }
 
-    handleScroll = (event) => {
+    handleScroll = () => {
         console.log(`window.pageYOffset ${window.pageYOffset}`)
         console.log(`window.innerHeight ${window.innerHeight}`)
         this.setState({
@@ -41,7 +41,7 @@ class MainPage extends Component {
                 <section className="et-hero-tabs">
                     <h1 className="white-text">AHMED ANWAR</h1>
                     <h3 className="white-text">Software Engineer</h3>
-                    <div class="bg-image">
+                    <div className="bg-image">
                     </div>
                     <div className={`${this.state.navBarClass}`}>
                         <Link className="et-hero-tab"
@@ -110,16 +110,23 @@ class MainPage extends Component {
                         </h3>
                         <h3>
                             You can also<span>&nbsp;</span>
-                            <a class="email-link"
+                            <a className="email-link"
                                href="https://drive.google.com/file/d/1ozaZZiX0fCpbobl-vSM-B3wL5l__Ng46/view?usp=sharing"
                                rel="noopener noreferrer"
-                               target="_blank">Get a copy of my CV here</a>
+                               target="_blank">get a copy of my CV here</a>
                         </h3>
-                        <a class="email-link"
+                        <h3>
+                            Or better yet,<span>&nbsp;</span>
+                            <a className="email-link"
+                               href="https://www.aanwar.cyou/resume-generator"
+                               rel="noopener noreferrer"
+                               target="_blank">check out my auto-generated resume here</a>
+                        </h3>
+                        <a className="email-link"
                            href="mailto:ahmedanwarm@outlook.com"
                            rel="noopener noreferrer"
                            target="_blank">Email</a>
-                        <a class="email-link"
+                        <a className="email-link"
                            href="https://api.whatsapp.com/send?phone=201009149603"
                            rel="noopener noreferrer"
                            target="_blank">WhatsApp</a>
