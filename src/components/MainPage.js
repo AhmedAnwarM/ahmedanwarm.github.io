@@ -106,7 +106,7 @@ class MainPage extends Component {
                             I am not currently looking to change positions, but
                             if you would like to contact me
                             for any reason please do so by all means and I will get back to you as
-                            soon as I can!
+                            soon as possible!
                         </h3>
                         <h3>
                             You can also<span>&nbsp;</span>
