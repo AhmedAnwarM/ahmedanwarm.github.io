@@ -118,7 +118,7 @@ class MainPage extends Component {
                         <h3>
                             Or better yet,<span>&nbsp;</span>
                             <a className="email-link"
-                               href="https://resume.aanwar.cyou/"
+                               href="https://resume.ahmedanwarm.com/"
                                rel="noopener noreferrer"
                                target="_blank">check out my auto-generated resume here</a>
                         </h3>
