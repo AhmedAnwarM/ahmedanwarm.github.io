@@ -1,0 +1,112 @@
+---
+---
+
+<section
+  id="about"
+  class="relative min-h-screen flex flex-col justify-center px-6 dot-grid overflow-hidden"
+>
+  <!-- Ambient glow orbs -->
+  <div
+    class="pointer-events-none absolute -top-32 -left-32 w-96 h-96 rounded-full opacity-10"
+    style="background: radial-gradient(circle, #38bdf8, transparent 70%);"
+  ></div>
+  <div
+    class="pointer-events-none absolute bottom-0 right-0 w-80 h-80 rounded-full opacity-8"
+    style="background: radial-gradient(circle, #818cf8, transparent 70%);"
+  ></div>
+
+  <div class="max-w-6xl mx-auto w-full pt-28 pb-20 flex flex-col lg:flex-row items-center gap-16 lg:gap-12">
+
+    <!-- Left: text content -->
+    <div class="flex-1 min-w-0">
+      <!-- Intro label -->
+      <p class="reveal font-mono text-[color:var(--color-accent)] text-sm mb-5 tracking-widest">
+        Hi, my name is
+      </p>
+
+      <!-- Name -->
+      <h1 class="reveal reveal-delay-1 text-5xl sm:text-6xl md:text-7xl font-bold text-[color:var(--color-heading)] leading-tight mb-3">
+        Ahmed Anwar<span class="text-[color:var(--color-accent)]">.</span>
+      </h1>
+
+      <!-- Title -->
+      <h2 class="reveal reveal-delay-2 text-4xl sm:text-5xl md:text-6xl font-bold text-[color:var(--color-muted)] leading-tight mb-8">
+        Software Architect.
+      </h2>
+
+      <!-- Bio -->
+      <p class="reveal reveal-delay-3 max-w-xl text-[color:var(--color-body)] text-lg leading-relaxed mb-12">
+        I design and build scalable enterprise systems — from distributed architectures and
+        cloud infrastructure to the engineering teams that deliver them. With over a decade
+        of experience across the full software lifecycle, I bridge the gap between technical
+        vision and business impact.
+      </p>
+
+      <!-- CTA buttons -->
+      <div class="reveal reveal-delay-4 flex flex-wrap gap-4">
+        <a
+          href="#projects"
+          class="px-7 py-3.5 bg-[color:var(--color-accent)] text-[color:var(--color-bg)] font-semibold text-sm rounded-lg hover:opacity-85 transition-opacity duration-200 font-mono"
+        >
+          See My Work
+        </a>
+        <a
+          href="#contact"
+          class="px-7 py-3.5 border border-[color:var(--color-accent)] text-[color:var(--color-accent)] font-semibold text-sm rounded-lg hover:bg-[rgba(56,189,248,0.08)] transition-colors duration-200 font-mono"
+        >
+          Get In Touch
+        </a>
+      </div>
+
+      <!-- Quick stats -->
+      <div class="reveal mt-16 pt-10 border-t border-[color:var(--color-line)] grid grid-cols-2 sm:grid-cols-4 gap-8">
+        {
+          [
+            { value: '10+', label: 'Years of Experience' },
+            { value: '20+', label: 'Projects Delivered' },
+            { value: '4',   label: 'Countries Worked In' },
+            { value: '∞',   label: 'Problems Solved' },
+          ].map(({ value, label }) => (
+            <div>
+              <div class="text-3xl font-bold text-[color:var(--color-accent)] glow-text">{value}</div>
+              <div class="text-xs font-mono text-[color:var(--color-muted)] mt-1 leading-snug">{label}</div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <!-- Right: headshot -->
+    <div class="reveal reveal-delay-2 shrink-0 flex justify-center lg:justify-end">
+      <div class="relative">
+        <!-- Accent ring offset -->
+        <div
+          class="absolute inset-0 rounded-full translate-x-3 translate-y-3"
+          style="border: 2px solid var(--color-accent); border-radius: 9999px; opacity: 0.5;"
+          aria-hidden="true"
+        ></div>
+        <!-- Glow backdrop -->
+        <div
+          class="absolute inset-0 rounded-full blur-2xl opacity-20"
+          style="background: var(--color-accent);"
+          aria-hidden="true"
+        ></div>
+        <!-- Photo -->
+        <img
+          src="/img/headshot.jpg"
+          alt="Ahmed Anwar"
+          width="280"
+          height="280"
+          class="relative w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 rounded-full object-cover object-top"
+          style="border: 3px solid var(--color-accent);"
+        />
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40">
+    <span class="font-mono text-xs text-[color:var(--color-muted)] tracking-widest">SCROLL</span>
+    <div class="w-px h-10 bg-gradient-to-b from-[color:var(--color-muted)] to-transparent"></div>
+  </div>
+</section>

@@ -1,0 +1,138 @@
+---
+// TODO: Replace placeholder entries with your real work history.
+// Keep entries in reverse-chronological order (most recent first).
+const jobs = [
+  {
+    role: 'Software Architect',
+    company: 'Your Current Company',        // TODO
+    companyUrl: 'https://example.com',      // TODO
+    period: '20XX — Present',               // TODO
+    location: 'Cairo, Egypt',
+    bullets: [
+      'Define and own the technical vision and architecture roadmap for [product/platform].', // TODO
+      'Lead cross-functional squads across [X] engineers, aligning delivery with business strategy.',
+      'Designed event-driven microservices architecture that reduced system latency by X% and improved scalability to handle Y TPS.', // TODO
+      'Introduced Architecture Decision Records (ADRs) and internal RFCs to formalise engineering governance across the organisation.',
+      'Partner with product, operations and executive stakeholders to translate complex requirements into actionable technical plans.',
+    ],
+    stack: ['Domain-Driven Design', 'Event-Driven Architecture', 'Microservices', 'Cloud', 'API Design'], // TODO
+  },
+  {
+    role: 'Lead Software Engineer',
+    company: 'Sumerge',
+    companyUrl: 'https://www.sumerge.com',
+    period: '20XX — 20XX',                  // TODO
+    location: 'Cairo, Egypt',
+    bullets: [
+      'Led a squad of X engineers delivering [project/product] for enterprise clients across [industry].', // TODO
+      'Architected a [describe system] that processed X million events daily with 99.9% uptime.',
+      'Established engineering best practices: code review standards, CI/CD pipelines, testing strategy.',
+      'Mentored junior and mid-level engineers, growing multiple team members into senior roles.',
+    ],
+    stack: ['Java / Spring Boot', 'Kubernetes', 'PostgreSQL', 'Kafka', 'React'], // TODO
+  },
+  {
+    role: 'Senior Software Engineer',
+    company: 'Previous Company',            // TODO
+    companyUrl: 'https://example.com',      // TODO
+    period: '20XX — 20XX',                  // TODO
+    location: 'Cairo, Egypt',
+    bullets: [
+      'Built and maintained [describe service] serving X active users.', // TODO
+      'Drove adoption of test-driven development, raising test coverage from X% to Y%.',
+      'Designed and implemented REST APIs consumed by [X] downstream services.',
+    ],
+    stack: ['Node.js', 'TypeScript', 'MongoDB', 'Docker', 'AWS'], // TODO
+  },
+];
+---
+
+<section id="experience" class="py-24 px-6">
+  <div class="max-w-6xl mx-auto">
+
+    <!-- Section header -->
+    <div class="reveal mb-16">
+      <p class="font-mono text-[color:var(--color-accent)] text-sm tracking-widest mb-2">02. work experience</p>
+      <h2 class="text-3xl sm:text-4xl font-bold text-[color:var(--color-heading)]">
+        Where I've Worked
+      </h2>
+      <div class="mt-4 h-px w-24 bg-gradient-to-r from-[color:var(--color-accent)] to-transparent"></div>
+    </div>
+
+    <!-- Timeline -->
+    <div class="relative">
+      <!-- Vertical line -->
+      <div
+        class="hidden md:block absolute left-0 top-2 bottom-0 w-px timeline-line"
+        aria-hidden="true"
+      ></div>
+
+      <div class="flex flex-col gap-14">
+        {
+          jobs.map((job, i) => (
+            <div class={`reveal reveal-delay-${(i % 3) + 1} md:pl-10 relative`}>
+              <!-- Timeline dot -->
+              <div
+                class="hidden md:block absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full border-2 border-[color:var(--color-accent)] bg-[color:var(--color-bg)]"
+                aria-hidden="true"
+              />
+
+              <!-- Header row -->
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 mb-1">
+                <h3 class="text-xl font-semibold text-[color:var(--color-heading)]">
+                  {job.role}&nbsp;
+                  <span class="text-[color:var(--color-accent)]">
+                    @&nbsp;<a
+                      href={job.companyUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="hover:underline underline-offset-4"
+                    >
+                      {job.company}
+                    </a>
+                  </span>
+                </h3>
+                <span class="font-mono text-xs text-[color:var(--color-muted)] whitespace-nowrap">
+                  {job.period}
+                </span>
+              </div>
+
+              <!-- Location -->
+              <p class="font-mono text-xs text-[color:var(--color-muted)] mb-4">{job.location}</p>
+
+              <!-- Bullets -->
+              <ul class="space-y-2.5 mb-5">
+                {job.bullets.map((bullet) => (
+                  <li class="flex gap-3 text-[color:var(--color-body)] text-sm leading-relaxed">
+                    <span class="mt-1.5 shrink-0 w-1.5 h-1.5 rounded-full bg-[color:var(--color-accent)] opacity-70" />
+                    {bullet}
+                  </li>
+                ))}
+              </ul>
+
+              <!-- Tech stack -->
+              <div class="flex flex-wrap gap-2">
+                {job.stack.map((tech) => (
+                  <span class="skill-tag">{tech}</span>
+                ))}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <!-- CV callout -->
+    <div class="reveal mt-16 text-center">
+      <p class="text-[color:var(--color-muted)] text-sm mb-4">Want the full picture?</p>
+      <a
+        href="https://drive.google.com/file/d/1ozaZZiX0fCpbobl-vSM-B3wL5l__Ng46/view?usp=sharing"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 px-6 py-2.5 border border-[color:var(--color-accent)] text-[color:var(--color-accent)] text-sm font-mono rounded-lg hover:bg-[rgba(56,189,248,0.08)] transition-colors"
+      >
+        View Full Resume ↗
+      </a>
+    </div>
+  </div>
+</section>

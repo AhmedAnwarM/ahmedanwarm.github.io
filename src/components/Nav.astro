@@ -1,0 +1,165 @@
+---
+const links = [
+  { href: '#about',      label: 'About',      num: '01', section: 'about'      },
+  { href: '#experience', label: 'Experience',  num: '02', section: 'experience' },
+  { href: '#skills',     label: 'Skills',      num: '03', section: 'skills'     },
+  { href: '#projects',   label: 'Projects',    num: '04', section: 'projects'   },
+  { href: '#contact',    label: 'Contact',     num: '05', section: 'contact'    },
+];
+---
+
+<header id="site-nav" class="fixed top-0 left-0 right-0 z-50">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+
+    <!-- Logo — object preserves SVG CSS animations (unlike img which suppresses them).
+         The SVG is 550×550 with no viewBox so we scale it down via CSS transform
+         inside an overflow:hidden container rather than relying on attribute sizing. -->
+    <a href="#" aria-label="Back to top" class="hover:opacity-75 transition-opacity"
+       style="display:block;width:64px;height:64px;overflow:hidden;">
+      <object
+        type="image/svg+xml"
+        data="/img/logo.svg"
+        aria-label="Ahmed Anwar logo"
+        style="display:block;width:550px;height:550px;transform:scale(0.1164);transform-origin:0 0;pointer-events:none;"
+      ></object>
+    </a>
+
+    <!-- Desktop links -->
+    <nav class="hidden md:flex items-center gap-6" aria-label="Main navigation">
+      {
+        links.map(({ href, label, num, section }) => (
+          <a
+            href={href}
+            data-section={section}
+            class="nav-link text-sm font-mono text-[color:var(--color-muted)] hover:text-[color:var(--color-accent)] transition-colors duration-200"
+          >
+            <span class="text-[color:var(--color-accent)] text-xs mr-1 opacity-70">{num}.</span>
+            {label}
+          </a>
+        ))
+      }
+      <a
+        href="https://drive.google.com/file/d/1ozaZZiX0fCpbobl-vSM-B3wL5l__Ng46/view?usp=sharing"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="ml-2 px-4 py-1.5 border border-[color:var(--color-accent)] text-[color:var(--color-accent)] text-sm font-mono rounded hover:bg-[rgba(56,189,248,0.1)] transition-colors duration-200"
+      >
+        Resume ↗
+      </a>
+    </nav>
+
+    <!-- Mobile hamburger — min 44×44 touch target -->
+    <button
+      id="mobile-toggle"
+      class="md:hidden w-11 h-11 flex items-center justify-center rounded-lg text-[color:var(--color-muted)] hover:text-[color:var(--color-accent)] hover:bg-[rgba(56,189,248,0.08)] transition-colors"
+      aria-label="Toggle navigation"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <svg id="icon-open" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+      <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="hidden" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden border-t border-[color:var(--color-line)] bg-[color:var(--color-surface)]"
+    role="dialog"
+    aria-label="Navigation menu"
+  >
+    <nav class="flex flex-col items-center gap-6 py-10" aria-label="Mobile navigation">
+      {
+        links.map(({ href, label, num, section }) => (
+          <a
+            href={href}
+            data-section={section}
+            class="mobile-link nav-link text-sm font-mono text-[color:var(--color-muted)] hover:text-[color:var(--color-accent)] transition-colors py-1"
+          >
+            <span class="text-[color:var(--color-accent)] mr-1 opacity-70">{num}.</span>
+            {label}
+          </a>
+        ))
+      }
+      <a
+        href="https://drive.google.com/file/d/1ozaZZiX0fCpbobl-vSM-B3wL5l__Ng46/view?usp=sharing"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mobile-link mt-2 px-6 py-2 border border-[color:var(--color-accent)] text-[color:var(--color-accent)] text-sm font-mono rounded hover:bg-[rgba(56,189,248,0.1)] transition-colors"
+      >
+        Resume ↗
+      </a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  /* Active nav link — set by scroll-spy below */
+  .nav-link[aria-current="true"] {
+    color: var(--color-accent);
+  }
+  .nav-link[aria-current="true"] span {
+    opacity: 1;
+  }
+</style>
+
+<script>
+  const nav       = document.getElementById('site-nav')!;
+  const toggle    = document.getElementById('mobile-toggle')!;
+  const menu      = document.getElementById('mobile-menu')!;
+  const iconOpen  = document.getElementById('icon-open')!;
+  const iconClose = document.getElementById('icon-close')!;
+
+  // ── Transparent → frosted glass on scroll ─────────────────
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 72);
+  }, { passive: true });
+
+  // ── Hamburger toggle ───────────────────────────────────────
+  toggle.addEventListener('click', () => {
+    const isOpen = !menu.classList.contains('hidden');
+    menu.classList.toggle('hidden', isOpen);
+    iconOpen.classList.toggle('hidden', !isOpen);
+    iconClose.classList.toggle('hidden', isOpen);
+    toggle.setAttribute('aria-expanded', String(!isOpen));
+  });
+
+  // Close mobile menu on link click
+  document.querySelectorAll('.mobile-link').forEach((link) => {
+    link.addEventListener('click', () => {
+      menu.classList.add('hidden');
+      iconOpen.classList.remove('hidden');
+      iconClose.classList.add('hidden');
+      toggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // ── Scroll-spy active state ────────────────────────────────
+  const sectionIds = ['about', 'experience', 'skills', 'projects', 'contact'];
+  const navLinks   = document.querySelectorAll<HTMLAnchorElement>('.nav-link');
+
+  function setActive(id: string) {
+    navLinks.forEach((a) => {
+      const active = a.dataset.section === id;
+      a.setAttribute('aria-current', String(active));
+    });
+  }
+
+  const sectionObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) setActive(entry.target.id);
+      });
+    },
+    { rootMargin: '-30% 0px -60% 0px', threshold: 0 }
+  );
+
+  sectionIds.forEach((id) => {
+    const el = document.getElementById(id);
+    if (el) sectionObserver.observe(el);
+  });
+</script>
